@@ -1,0 +1,316 @@
+package designpattern;
+
+import demo.Singleton;
+
+public class SingletonExample {
+
+    public static void main(String[] args) {
+
+        SingletonPattern pattern = SingletonPattern.getInstance(23);
+        SingletonPattern pattern1 = SingletonPattern.getInstance(29);
+        pattern.data = 34;
+        pattern1.data = 65;
+        System.out.println(pattern.data +" "+ pattern1.data);
+    }
+}
+
+
+
+
+###################################################################
+
+
+
+
+package designpattern;
+
+public class SingletonPattern {
+    int data;
+
+    private SingletonPattern(int data)
+    {
+        this.data = data;
+	System.out.println("the value of data when constructor was called was" + data);
+
+    }
+
+    public static SingletonPattern pat = null ;
+
+    public static  SingletonPattern getInstance(int data)
+    {
+        if(pat == null)
+        {
+            pat = new SingletonPattern(data);
+            return pat;
+        }
+        else
+        {
+            return pat;
+        }
+
+
+
+    }
+
+
+}
+
+#############################################################
+
+
+
+package designpattern;
+
+import java.io.*;
+
+import static designpattern.SingletonPattern.pat;
+
+public class Debugger {
+    public static void main(String[] args) throws IOException {
+
+        //this code is to learn about the debugging in IntelliJ
+
+        int sum = 0;
+        int n = 10;
+
+        for (int i = 0; i <= n; i++) {
+            sum += i;
+        }
+
+        /* here use step into instead of stepover stepinto make u enter into the thay respectice calss if no class is present step into
+        work same as stepover*/
+
+
+        SingletonPattern.getInstance(45);
+
+
+
+
+        //data variable should be made as public SingletonPattern class
+
+
+
+        System.out.println(pat.data);
+
+        System.out.println("the sum of the n natural number is" + " " + sum);
+
+        /*here actually we need sum as 100 so adjusting variable y to 45 as sum variable is 55 is is donr by right click on data in debug
+        concole and set value to required value and change later in cide*/
+
+
+
+
+        int y = 45;
+        int z = sum + y;
+
+        System.out.println(z + " must be 100");
+
+
+
+
+        //this is how to copy code from stackoverflow and embedd in your code
+	//by this without even knowing the code we are embedding it into our code
+
+
+
+
+
+        FileInputStream fstream = new FileInputStream("F:\\projects\\src\\main\\java\\designpattern\\Debugger.java");
+        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+        String strLine;
+
+        //Read File Line By Line
+        while ((strLine = br.readLine()) != null)   {
+            // Print the content on the console - do what you want to do
+            System.out.println (strLine);
+        }
+
+//Close the input stream
+        fstream.close();
+
+
+
+
+    }
+
+}
+
+
+
+
+
+o/p for above code(note all 3 classes should be in same packages)
+
+when we run from debugger class
+
+
+
+
+"C:\Program Files\Java\jdk1.8.0_251\bin\java.exe" "-javaagent:F:\IntelliJ IDEA Community Edition 2020.1.2\lib\idea_rt.jar=52694:F:\IntelliJ IDEA Community Edition 2020.1.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_251\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_251\jre\lib\rt.jar;F:\projects\target\classes" designpattern.Debugger
+when constructor called data was45
+45
+the sum of the n natural number is 55
+100 must be 100
+package designpattern;
+
+import java.io.*;
+
+import static designpattern.SingletonPattern.pat;
+
+public class Debugger {
+    public static void main(String[] args) throws IOException {
+
+        //this code is to learn about the debugging in IntelliJ
+
+        int sum = 0;
+        int n = 10;
+
+        for (int i = 0; i <= n; i++) {
+            sum += i;
+        }
+
+        /* here use step into instead of stepover stepinto make u enter into the thay respectice calss if no class is present step into
+        work same as stepover*/
+        SingletonPattern.getInstance(45);
+
+        //data variable should be made as public SingletonPattern class
+        System.out.println(pat.data);
+
+        System.out.println("the sum of the n natural number is" + " " + sum);
+
+        /*here actually we need sum as 100 so adjusting variable y to 45 as sum variable is 55 is is donr by right click on data in debug
+        concole and set value to required value and change later in cide*/
+        int y = 45;
+        int z = sum + y;
+
+        System.out.println(z + " must be 100");
+
+        //this is how to copy code from stackoverflow and embedd in your code
+
+        FileInputStream fstream = new FileInputStream("F:\\projects\\src\\main\\java\\designpattern\\Debugger.java");
+        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+        String strLine;
+
+//Read File Line By Line
+        while ((strLine = br.readLine()) != null)   {
+            // Print the content on the console - do what you want to do
+            System.out.println (strLine);
+        }
+
+//Close the input stream
+        fstream.close();
+
+
+
+
+    }
+
+}
+
+Process finished with exit code 0
+
+
+
+
+
+2) when we run from singleton example class
+
+65 65
+
+
+
+###########################################################################################################
+imp note regarding exception handling in java
+
+       throw vs throws
+
+throw keyword throw an exception explictily
+
+throws keyword in signatuere of the method indicate the method may throw one of the exception
+
+when method is using throws keyword then FUNCTION CALL CALLING THAT METHOD SHOULD HANDLE EXCEPTION 
+BY PUTTING FUNCTION CALL IN TRY-CATCH BLOCK 
+
+				or 
+
+coder can also add signature throws in main method from which main method that function call is calling then try-catch is not required
+
+
+#############################################################################################################
+
+object creation is not an  rocketscience when u create object that object variable will hold adress of memory where memory is allocated 
+thats it.
+since this object variable is the non primitive datatype that object should be declared as 
+
+					Vehicle bike = new Vehicle();
+					Vehicle scooty = bike;
+
+here vehicle is not datatype u nedd to know tis to understand linkedlist
+
+
+##############################################################################################################################
+
+
+static v/s non static
+
+staic can be used for 
+		variable
+		methods
+
+--> when u declared either variables or class as static it becomes class memenber rteher than memeber of objects
+--> static method can only access and modify static variable only
+
+generally we use oblect name to acces the variables and method of that class
+in case of static varibale we can follow above rules inlucing new rsyntax that is 
+						
+				classname variable/methods
+
+                                        or
+	
+				objectname variable/methods
+
+
+***
+-- > for stasic variables different memory location will not be allocated (sismilar to singleton class when u r cereating 2 object
+u refer above code) 
+
+
+Eg prog
+
+
+
+class Vehicle{
+
+	static int data ;
+	public static void main(String[] args)
+	{
+		Vehicle car = new Vehicle();  /*here car and bike variable are non primitive datatype of type class new keyword 
+		Vehicle bike  = new Vehicle();	allocate memory for the variable car and bike*/
+		car.data = 45;
+		bike.data = 56;
+		System.out.println(car.data + " " + bike.data);
+	}
+}
+
+
+o/p : 
+ 56 56 (this is because static variables share memory location) 
+
+ 
+
+
+
+
+
+
+
+
+#################################################################################################################################
+
+Objects v/s Class
+
+i wanna buy the car u go to shop and ask for hyundai creta(here u are specyfing model) u wont ask give me car 
+       car model is Object car is CLASS
+so in real world object has existence and class donot have existence
