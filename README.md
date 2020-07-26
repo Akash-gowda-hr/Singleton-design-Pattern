@@ -1,3 +1,3 @@
 # Singleton-design-Pattern
 
-Implementation of the Singleton Design Pattern
+Implementation of the Singleton Design Pattern in JAVA
